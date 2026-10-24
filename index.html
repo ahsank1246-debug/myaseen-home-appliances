@@ -1,1 +1,215 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#071426"><title>M.Yaseen Home Appliances</title><link rel="stylesheet" href="style.css"></head><body><header class="wrap nav"><a class="brand" href="#">🏠 M.YASEEN <b>HOME APPLIANCES</b><small>Your home. Upgraded.</small></a><nav><a href="#products">Products</a><a href="#offers">Offers</a><button id="admin-open" class="btn ghost">⚙ Admin</button></nav></header><main class="wrap"><div id="banner" class="banner">✨ HOT DEALS • Special prices on selected appliances</div><section class="hero"><div><div class="eyebrow">SMART CHOICES. BETTER LIVING.</div><h1>Make home feel<br><span>extraordinary.</span></h1><p>Discover home appliances selected for everyday comfort. Browse products, explore special offers, and order directly on WhatsApp.</p><a class="btn glow" href="#products">Explore products ↘</a> <a class="btn ghost" href="#offers">See hot deals ✦</a><div class="pills"><i>✦ Curated appliances</i><i>✦ Special offers</i><i>✦ WhatsApp ordering</i></div></div><div class="art"><div class="orb"></div><div class="glass">🏡<small>COMFORT, REDEFINED</small><i>━━━━</i></div><label>⚡ Smart choices</label></div></section><section id="offers" class="heading"><div class="eyebrow">THE GOOD STUFF</div><h2>Find your next favourite.</h2></section><section id="products"><div class="filters"><input id="search" placeholder="⌕ Search appliances..."><select id="category"><option value="all">All categories</option></select><select id="sort"><option value="featured">Featured first</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></div><p id="status">Loading products…</p><div id="grid" class="grid"></div></section><section class="cta"><div><div class="eyebrow">READY WHEN YOU ARE</div><h2>Let’s make home better.</h2><p>Questions about a product? Message us and we’ll help.</p></div><a class="btn glow" href="https://wa.me/923218700974" target="_blank">Chat on WhatsApp ↗</a></section><footer>© <span id="year"></span> M.YASEEN HOME APPLIANCES <span>Made for better everyday living ✦</span></footer></main><div id="modal" class="modal hidden"><div class="shade" data-close></div><section class="panel"><button class="x" data-close>×</button><div class="eyebrow">PRIVATE ACCESS</div><h2>Admin studio</h2><p class="muted">Sign in using the admin account created in Firebase Authentication.</p><form id="login"><label>Email<input id="email" type="email" required></label><label>Password<input id="password" type="password" required></label><button class="btn glow">Sign in securely ↗</button></form><p id="message"></p><div id="admin" class="hidden"><button id="logout" class="btn ghost">Log out</button><h3>Manage products</h3><form id="editor"><input id="pid" type="hidden"><label>Product name<input id="name" required></label><label>Category<select id="cat"><option>Air Conditioners</option><option>Refrigerators</option><option>Washing Machines</option><option>Kitchen Appliances</option><option>Fans</option><option>Small Appliances</option><option>Other</option></select></label><label>Description<textarea id="desc" rows="2"></textarea></label><div class="twocol"><label>Price (PKR)<input id="price" type="number" min="0" value="0" required></label><label>Stock pieces<input id="stock" type="number" min="0" value="0" required></label></div><label>Image URLs (one public HTTPS URL per line)<textarea id="images" rows="3" placeholder="https://.../image1.jpg"></textarea><small>Multiple lines = multiple photos.</small><label class="check"><input id="sale" type="checkbox"> Put on sale</label><div class="twocol"><label>Discount type<select id="dtype"><option value="percent">Percentage (%)</option><option value="fixed">Fixed amount (PKR)</option></select></label><label>Discount<input id="discount" type="number" min="0" value="0"></label></div><label class="check"><input id="active" type="checkbox" checked> Show on website</label><button class="btn">💾 Save product</button><button id="cancel" type="button" class="btn ghost hidden">Cancel edit</button></form><h3>Existing products</h3><div id="admin-list"></div><form id="banner-form"><label>Sale banner text<input id="banner-input" maxlength="120"></label><button class="btn ghost">Update banner</button></form></div></section></div><div id="toast" class="toast"></div><script type="module" src="app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071426">
+  <title>M.YASEEN Home Appliances</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="wrap nav">
+    <a class="brand" href="#">
+      🏠 M.YASEEN <b>HOME APPLIANCES</b>
+      <small>Your home. Upgraded.</small>
+    </a>
+    <nav>
+      <a href="#products">Products</a>
+      <a href="#offers">Offers</a>
+      <button id="admin-open" class="btn ghost">⚙ Admin</button>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div id="banner" class="banner">
+      ✨ HOT DEALS • Special prices on selected appliances
+    </div>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">SMART CHOICES. BETTER LIVING.</div>
+        <h1>Make home feel<br><span>extraordinary.</span></h1>
+        <p>
+          Discover home appliances selected for everyday comfort.
+          Browse products, explore special offers, and order directly on WhatsApp.
+        </p>
+        <a class="btn glow" href="#products">Explore products ↘</a>
+        <a class="btn ghost" href="#offers">See hot deals ✦</a>
+        <div class="pills">
+          <i>✦ Curated appliances</i>
+          <i>✦ Special offers</i>
+          <i>✦ WhatsApp ordering</i>
+        </div>
+      </div>
+
+      <div class="art">
+        <div class="orb"></div>
+        <div class="glass">
+          🏡
+          <small>COMFORT, REDEFINED</small>
+          <i>━━━━</i>
+        </div>
+        <label>⚡ Smart choices</label>
+      </div>
+    </section>
+
+    <section id="offers" class="heading">
+      <div class="eyebrow">THE GOOD STUFF</div>
+      <h2>Find your next favourite.</h2>
+    </section>
+
+    <section id="products">
+      <div class="filters">
+        <input id="search" placeholder="⌕ Search appliances...">
+        <select id="category">
+          <option value="all">All categories</option>
+        </select>
+        <select id="sort">
+          <option value="featured">Featured first</option>
+          <option value="low">Price: low to high</option>
+          <option value="high">Price: high to low</option>
+        </select>
+      </div>
+      <p id="status">Loading products…</p>
+      <div id="grid" class="grid"></div>
+    </section>
+
+    <section class="cta">
+      <div>
+        <div class="eyebrow">READY WHEN YOU ARE</div>
+        <h2>Let’s make home better.</h2>
+        <p>Questions about a product? Message us and we’ll help.</p>
+      </div>
+      <a class="btn glow" href="https://wa.me/923218700974" target="_blank">
+        Chat on WhatsApp ↗
+      </a>
+    </section>
+
+    <footer>
+      © <span id="year"></span> M.YASEEN HOME APPLIANCES
+      <span>Made for better everyday living ✦</span>
+    </footer>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="shade" data-close></div>
+
+    <section class="panel">
+      <button class="x" data-close>×</button>
+      <div class="eyebrow">PRIVATE ACCESS</div>
+      <h2>Admin studio</h2>
+      <p class="muted">
+        Sign in using the admin account created in Firebase Authentication.
+      </p>
+
+      <form id="login">
+        <label>
+          Email
+          <input id="email" type="email" required>
+        </label>
+        <label>
+          Password
+          <input id="password" type="password" required>
+        </label>
+        <button class="btn glow">Sign in securely ↗</button>
+      </form>
+
+      <p id="message"></p>
+
+      <div id="admin" class="hidden">
+        <button id="logout" class="btn ghost">Log out</button>
+        <h3>Manage products</h3>
+
+        <form id="editor">
+          <input id="pid" type="hidden">
+
+          <label>
+            Product name
+            <input id="name" required>
+          </label>
+
+          <label>
+            Category
+            <select id="cat">
+              <option>Air Conditioners</option>
+              <option>Refrigerators</option>
+              <option>Washing Machines</option>
+              <option>Kitchen Appliances</option>
+              <option>Fans</option>
+              <option>Small Appliances</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>
+            Description
+            <textarea id="desc" rows="2"></textarea>
+          </label>
+
+          <div class="twocol">
+            <label>
+              Price (PKR)
+              <input id="price" type="number" min="0" value="0" required>
+            </label>
+            <label>
+              Stock pieces
+              <input id="stock" type="number" min="0" value="0" required>
+            </label>
+          </div>
+
+          <label>
+            Image URLs (one public HTTPS URL per line)
+            <textarea id="images" rows="3" placeholder="https://.../image1.jpg"></textarea>
+          </label>
+          <small>Multiple lines = multiple photos.</small>
+
+          <label class="check">
+            <input id="sale" type="checkbox">
+            Put on sale
+          </label>
+
+          <div class="twocol">
+            <label>
+              Discount type
+              <select id="dtype">
+                <option value="percent">Percentage (%)</option>
+                <option value="fixed">Fixed amount (PKR)</option>
+              </select>
+            </label>
+            <label>
+              Discount
+              <input id="discount" type="number" min="0" value="0">
+            </label>
+          </div>
+
+          <label class="check">
+            <input id="active" type="checkbox" checked>
+            Show on website
+          </label>
+
+          <button class="btn">💾 Save product</button>
+          <button id="cancel" type="button" class="btn ghost hidden">
+            Cancel edit
+          </button>
+        </form>
+
+        <h3>Existing products</h3>
+        <div id="admin-list"></div>
+
+        <form id="banner-form">
+          <label>
+            Sale banner text
+            <input id="banner-input" maxlength="120">
+          </label>
+          <button class="btn ghost">Update banner</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
