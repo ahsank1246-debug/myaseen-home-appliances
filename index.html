@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +9,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <header class="wrap nav">
     <a class="brand" href="#">
       🏠 M.YASEEN <b>HOME APPLIANCES</b>
@@ -17,23 +17,18 @@
     <nav>
       <a href="#products">Products</a>
       <a href="#offers">Offers</a>
-      <button id="admin-open" class="btn ghost">⚙ Admin</button>
+      <button id="admin-open" class="btn ghost" type="button">⚙ Admin</button>
     </nav>
   </header>
 
   <main class="wrap">
-    <div id="banner" class="banner">
-      ✨ HOT DEALS • Special prices on selected appliances
-    </div>
+    <div id="banner" class="banner">✨ HOT DEALS • Special prices on selected appliances</div>
 
     <section class="hero">
       <div>
         <div class="eyebrow">SMART CHOICES. BETTER LIVING.</div>
         <h1>Make home feel<br><span>extraordinary.</span></h1>
-        <p>
-          Discover home appliances selected for everyday comfort.
-          Browse products, explore special offers, and order directly on WhatsApp.
-        </p>
+        <p>Discover home appliances selected for everyday comfort. Browse products, explore special offers, and order directly on WhatsApp.</p>
         <a class="btn glow" href="#products">Explore products ↘</a>
         <a class="btn ghost" href="#offers">See hot deals ✦</a>
         <div class="pills">
@@ -42,14 +37,9 @@
           <i>✦ WhatsApp ordering</i>
         </div>
       </div>
-
       <div class="art">
         <div class="orb"></div>
-        <div class="glass">
-          🏡
-          <small>COMFORT, REDEFINED</small>
-          <i>━━━━</i>
-        </div>
+        <div class="glass">🏡<small>COMFORT, REDEFINED</small><i>━━━━</i></div>
         <label>⚡ Smart choices</label>
       </div>
     </section>
@@ -61,11 +51,11 @@
 
     <section id="products">
       <div class="filters">
-        <input id="search" placeholder="⌕ Search appliances...">
-        <select id="category">
+        <input id="search" placeholder="⌕ Search appliances..." aria-label="Search appliances">
+        <select id="category" aria-label="Filter by category">
           <option value="all">All categories</option>
         </select>
-        <select id="sort">
+        <select id="sort" aria-label="Sort products">
           <option value="featured">Featured first</option>
           <option value="low">Price: low to high</option>
           <option value="high">Price: high to low</option>
@@ -81,9 +71,7 @@
         <h2>Let’s make home better.</h2>
         <p>Questions about a product? Message us and we’ll help.</p>
       </div>
-      <a class="btn glow" href="https://wa.me/923218700974" target="_blank">
-        Chat on WhatsApp ↗
-      </a>
+      <a class="btn glow" href="https://wa.me/923218700974" target="_blank" rel="noopener">Chat on WhatsApp ↗</a>
     </section>
 
     <footer>
@@ -92,45 +80,68 @@
     </footer>
   </main>
 
+  <!-- Product details and photo gallery -->
+  <div id="product-modal" class="product-modal hidden" aria-hidden="true">
+    <div class="product-shade" data-product-close></div>
+    <section class="product-panel" role="dialog" aria-modal="true" aria-labelledby="detail-name">
+      <button class="x product-x" type="button" data-product-close aria-label="Close product details">×</button>
+
+      <div class="detail-layout">
+        <div class="detail-gallery">
+          <div class="detail-main-wrap">
+            <button id="photo-prev" class="gallery-arrow prev" type="button" aria-label="Previous photo">‹</button>
+            <img id="detail-main-photo" class="detail-main-photo" alt="Product photo">
+            <div id="detail-no-photo" class="detail-no-photo hidden">🏠<small>No product photo</small></div>
+            <button id="photo-next" class="gallery-arrow next" type="button" aria-label="Next photo">›</button>
+            <span id="photo-count" class="photo-count"></span>
+          </div>
+          <div id="detail-thumbnails" class="detail-thumbnails"></div>
+        </div>
+
+        <div class="detail-info">
+          <div id="detail-category" class="eyebrow"></div>
+          <h2 id="detail-name">Product name</h2>
+          <p id="detail-description"></p>
+          <div id="detail-price" class="price"></div>
+          <p id="detail-stock" class="detail-stock"></p>
+          <a id="detail-whatsapp" class="btn glow detail-order" href="#" target="_blank" rel="noopener">Order on WhatsApp ↗</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Admin login and management -->
   <div id="modal" class="modal hidden">
     <div class="shade" data-close></div>
-
     <section class="panel">
-      <button class="x" data-close>×</button>
+      <button class="x" data-close type="button">×</button>
       <div class="eyebrow">PRIVATE ACCESS</div>
       <h2>Admin studio</h2>
-      <p class="muted">
-        Sign in using the admin account created in Firebase Authentication.
-      </p>
+      <p class="muted">Sign in using the admin account created in Firebase Authentication.</p>
 
       <form id="login">
-        <label>
-          Email
-          <input id="email" type="email" required>
+        <label>Email
+          <input id="email" type="email" required autocomplete="username">
         </label>
-        <label>
-          Password
-          <input id="password" type="password" required>
+        <label>Password
+          <input id="password" type="password" required autocomplete="current-password">
         </label>
         <button class="btn glow">Sign in securely ↗</button>
       </form>
-
       <p id="message"></p>
 
       <div id="admin" class="hidden">
-        <button id="logout" class="btn ghost">Log out</button>
+        <button id="logout" class="btn ghost" type="button">Log out</button>
         <h3>Manage products</h3>
 
         <form id="editor">
           <input id="pid" type="hidden">
 
-          <label>
-            Product name
+          <label>Product name
             <input id="name" required>
           </label>
 
-          <label>
-            Category
+          <label>Category
             <select id="cat">
               <option>Air Conditioners</option>
               <option>Refrigerators</option>
@@ -142,64 +153,60 @@
             </select>
           </label>
 
-          <label>
-            Description
+          <label>Description
             <textarea id="desc" rows="2"></textarea>
           </label>
 
           <div class="twocol">
-            <label>
-              Price (PKR)
+            <label>Price (PKR)
               <input id="price" type="number" min="0" value="0" required>
             </label>
-            <label>
-              Stock pieces
+            <label>Stock pieces
               <input id="stock" type="number" min="0" value="0" required>
             </label>
           </div>
 
-          <label>
-            Image URLs (one public HTTPS URL per line)
-            <textarea id="images" rows="3" placeholder="https://.../image1.jpg"></textarea>
+          <label>Upload product photos from phone/gallery
+            <input id="image-files" type="file" accept="image/jpeg,image/png,image/webp" multiple>
           </label>
-          <small>Multiple lines = multiple photos.</small>
+
+          <p id="upload-status" class="upload-status">Direct uploads require Cloudinary configuration. Existing image URLs can still be used.</p>
+
+          <label>Product image URLs (one public HTTPS URL per line)
+            <textarea id="images" rows="4" placeholder="Uploaded URLs appear here; you can also paste existing URLs"></textarea>
+          </label>
+
+          <small>Maximum 10 photos per product. When editing, existing photo URLs are kept until you remove them from this box.</small>
 
           <label class="check">
-            <input id="sale" type="checkbox">
-            Put on sale
+            <input id="sale" type="checkbox"> Put on sale
           </label>
 
           <div class="twocol">
-            <label>
-              Discount type
+            <label>Discount type
               <select id="dtype">
                 <option value="percent">Percentage (%)</option>
                 <option value="fixed">Fixed amount (PKR)</option>
               </select>
             </label>
-            <label>
-              Discount
+            <label>Discount
               <input id="discount" type="number" min="0" value="0">
             </label>
           </div>
 
           <label class="check">
-            <input id="active" type="checkbox" checked>
-            Show on website
+            <input id="active" type="checkbox" checked> Show on website
           </label>
 
           <button class="btn">💾 Save product</button>
-          <button id="cancel" type="button" class="btn ghost hidden">
-            Cancel edit
-          </button>
+          <button id="cancel" type="button" class="btn ghost hidden">Cancel edit</button>
         </form>
 
         <h3>Existing products</h3>
         <div id="admin-list"></div>
 
         <form id="banner-form">
-          <label>
-            Sale banner text
+          <label>Sale banner text
             <input id="banner-input" maxlength="120">
           </label>
           <button class="btn ghost">Update banner</button>
@@ -208,8 +215,19 @@
     </section>
   </div>
 
-  <div id="toast" class="toast"></div>
+  <!-- Floating WhatsApp button -->
+  <a class="floating-whatsapp"
+     href="https://wa.me/923218700974?text=Assalam-o-Alaikum%2C%20I%20need%20information%20about%20your%20products."
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Chat with us on WhatsApp"
+     title="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="currentColor" d="M16 .8A15.1 15.1 0 0 0 3.1 23.7L1 31l7.5-2A15.2 15.2 0 1 0 16 .8Zm0 27.5a12.4 12.4 0 0 1-6.3-1.7l-.5-.3-4.5 1.2 1.2-4.4-.3-.5A12.3 12.3 0 1 1 16 28.3Zm6.8-9.2c-.4-.2-2.1-1-2.5-1.1-.3-.1-.6-.2-.8.2l-1.2 1.4c-.2.3-.4.3-.8.1a10.1 10.1 0 0 1-3-1.9 11.1 11.1 0 0 1-2-2.5c-.2-.4 0-.6.2-.8l.6-.7.4-.7c.1-.2 0-.5 0-.7l-1.1-2.6c-.3-.7-.6-.6-.8-.6h-.7c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.1s1.4 3.6 1.6 3.8c.2.3 2.8 4.3 6.8 6 2.4 1 3.3 1.1 4.5.9.7-.1 2.1-.9 2.4-1.8.3-.9.3-1.6.2-1.8-.1-.2-.4-.3-.8-.5Z"/>
+    </svg>
+  </a>
 
+  <div id="toast" class="toast"></div>
   <script type="module" src="app.js"></script>
 </body>
 </html>
