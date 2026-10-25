@@ -14,8 +14,8 @@ const firebaseConfig = {
 };
 
 // Cloudinary settings: fill these in after configuring your unsigned upload preset.
-const CLOUDINARY_CLOUD_NAME = "";
-const CLOUDINARY_UPLOAD_PRESET = "";
+const CLOUDINARY_CLOUD_NAME = "h3akbxbt";
+const CLOUDINARY_UPLOAD_PRESET = "products_upload";
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
