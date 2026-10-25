@@ -294,3 +294,12 @@
     height: 30px;
   }
 }
+.floating-whatsapp {
+  position: fixed !important;
+  right: 12px !important;
+  left: auto !important;
+  bottom: 80px !important;
+  z-index: 9999 !important;
+  transform: none !important;
+}
+
